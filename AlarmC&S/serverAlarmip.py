@@ -64,6 +64,7 @@ def sendMessage():
 	if clientpass == password:
 		print('Password Accepted')
 		print('Sending data to', client_address)
+		getStatus()
 		alarmMessage =("Alarm Status:" + AlarmStatus + "\nAlarm Active:" +AlarmActive)
 		connection.sendall(alarmMessage.encode('utf-8'))
 		print('Finished sending data to', client_address)
@@ -95,7 +96,6 @@ while True:
 		print ('connection from', client_address)
 		while True:
 			authClient()
-			getStatus()
 			sendMessage()
 			break
 	finally:
