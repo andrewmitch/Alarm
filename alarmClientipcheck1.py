@@ -33,11 +33,13 @@ def serverPassword():
     global serverPass
     while True:
         try:
-            serverPass =getpass.getpass('Please enter password for the server:')
+            serverPass = getpass.getpass('Please enter password for the server:')
             if len(serverPass) <=4:
-                print('Password too short, please enter a more approiate password.')
-            else:
+                print('Password not valid, server password must be greater than characters.')
+            elif serverPass.isalnum():
                 return(serverPass)
+            else:
+                print('Error, server password can only include numbers or letters, please try again')
         except ValueError:
             print("Error occurred, when entering password")
        
