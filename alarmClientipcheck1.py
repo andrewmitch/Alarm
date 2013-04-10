@@ -24,7 +24,12 @@ def serverPort():
     while True:
         try:
             portNumber = int(input('Please enter port number for server:'))
-            return int(portNumber)
+            if portNumber in range (0,1023):
+                print('Not a suitable port number, may be taken by Operating System')
+            elif portNumber in range (1024,65535):
+                return int(portNumber)
+            else:
+                print('Not a valid port number')
         except ValueError:
             print("Not a valid port number")
         
@@ -35,7 +40,7 @@ def serverPassword():
         try:
             serverPass = getpass.getpass('Please enter password for the server:')
             if len(serverPass) <=4:
-                print('Password not valid, server password must be greater than characters.')
+                print('Password not valid, server password must be greater than 4 characters.')
             elif serverPass.isalnum():
                 return(serverPass)
             else:
