@@ -37,9 +37,12 @@ def serverPassword():
                 try:
                         password = getpass.getpass('Please enter server password:')
                         if len(password) <=4:
-                                print('Password must be longer than 4 characters, please enter password again"')
+                                print('Password must be longer than 4 characters, please enter password again')
+                        elif password.isalnum():
+                                return (password)
                         else:
-                                return(password)
+                                print('Password not allowed, please try again')
+
                 except ValueError:
                         print('Password Error!')
 
