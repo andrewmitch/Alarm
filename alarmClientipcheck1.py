@@ -26,7 +26,7 @@ def serverPort():
             portNumber = int(input('Please enter port number for server:'))
             if portNumber in range (0,1023):
                 print('Not a suitable port number, may be taken by Operating System')
-            elif portNumber in range (1024,65535):
+            elif portNumber in range (1024,65536):
                 return int(portNumber)
             else:
                 print('Not a valid port number')
