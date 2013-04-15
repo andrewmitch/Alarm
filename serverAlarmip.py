@@ -60,11 +60,11 @@ def authClient():
 	clientpass= str(clientpass)
 
 def getStatus():
-        global AlarmActive
-        global AlarmStatus
+        global alarmTriggered
+        global alarmStatus
         lines = tuple(open('alarm.txt', encoding='utf-8', mode = 'r'))
-        AlarmActive = lines[0]
-        AlarmStatus = lines[1]
+        alarmTriggered = lines[0]
+        alarmStatus = lines[1]
         
 	
 # Function that will either send detils of the alarm to the client if the password matches that of the server. If this password is incorrect a password error message will be sent to the client
@@ -72,7 +72,7 @@ def sendMessage():
 	if clientpass == password:
 		print('Password Accepted')
 		print('Sending data to', client_address)
-		alarmMessage =("Alarm Status:" + AlarmStatus + "\nAlarm Active:" +AlarmActive)
+		alarmMessage =("Alarm Status:" + alarmStatus + "\nAlarm Triggered:" +alarmTriggered)
 		connection.sendall(alarmMessage.encode('utf-8'))
 		print('Finished sending data to', client_address)
 	else:
